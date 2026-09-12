@@ -1,0 +1,222 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif;
+  background: #030605;
+  color: #f7fffd;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.page {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(0, 255, 199, 0.08),
+      transparent 36%
+    ),
+    linear-gradient(145deg, #020403, #080d0b 58%, #020303);
+}
+
+.ambient {
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.ambient-one {
+  top: -12rem;
+  right: -8rem;
+  background: #00ffc8;
+}
+
+.ambient-two {
+  bottom: -15rem;
+  left: -10rem;
+  background: #ff195f;
+}
+
+.clock-card {
+  display: grid;
+  gap: 1.75rem;
+  justify-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.clock {
+  position: relative;
+  width: min(82vw, 520px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(0, 255, 202, 0.3);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 43%,
+    #0a100e 0%,
+    #040706 66%,
+    #010202 100%
+  );
+  box-shadow:
+    0 0 7px rgba(0, 255, 202, 0.7),
+    0 0 27px rgba(0, 255, 202, 0.26),
+    0 0 75px rgba(0, 255, 202, 0.13),
+    inset 0 0 52px rgba(0, 0, 0, 0.9),
+    inset 0 0 20px rgba(0, 255, 202, 0.08);
+}
+
+.clock::after {
+  position: absolute;
+  inset: 3.2%;
+  border: 1px solid rgba(31, 255, 206, 0.07);
+  border-radius: inherit;
+  content: "";
+}
+
+/* .minute-marks, */
+.hands {
+  position: absolute;
+  inset: 0;
+}
+
+/* .minute-marks i {
+  position: absolute;
+  top: 3.8%;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 1.5%;
+  border-radius: 2px;
+  background: rgba(64, 255, 216, 0.22);
+  transform-origin: 1px 3070%;
+}
+
+.minute-marks i:nth-child(5n + 1) {
+  height: 2.6%;
+  background: rgba(64, 255, 216, 0.58);
+  box-shadow: 0 0 5px rgba(0, 255, 202, 0.6);
+} */
+
+.number-position {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  z-index: 2;
+}
+
+.number-position b {
+  position: absolute;
+  top: 7.2%;
+  left: 50%;
+  display: grid;
+  width: clamp(2rem, 7vw, 3.3rem);
+  height: clamp(2rem, 7vw, 3.3rem);
+  place-items: center;
+  color: #20ffd3;
+
+  /* font-size: clamp(1.2rem, 4.3vw, 2rem);
+  font-weight: 800; */
+
+  font-family: "Trebuchet MS", "Arial Rounded MT Bold", sans-serif;
+  font-size: clamp(1.15rem, 4vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+
+  line-height: 1;
+  text-shadow:
+    0 0 4px #00ffd0,
+    0 0 11px rgba(0, 255, 208, 0.9),
+    0 0 22px rgba(0, 255, 208, 0.55);
+  translate: -50% 0;
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  z-index: 4;
+  display: block;
+  width: var(--hand-width);
+  height: var(--hand-length);
+  border-radius: 999px;
+  background: var(--hand-color);
+  box-shadow:
+    0 0 6px var(--hand-glow),
+    0 0 15px var(--hand-glow);
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.hour-hand {
+  --hand-width: clamp(6px, 1.3vw, 9px);
+  --hand-length: 25%;
+  --hand-color: #f7fffd;
+  --hand-glow: rgba(255, 255, 255, 0.65);
+}
+
+.minute-hand {
+  --hand-width: clamp(5px, 1.1vw, 8px);
+  --hand-length: 35%;
+  --hand-color: #16fbd0;
+  --hand-glow: rgba(0, 255, 208, 0.85);
+}
+
+.second-hand {
+  --hand-width: 2px;
+  --hand-length: 39%;
+  --hand-color: #ff2d67;
+  --hand-glow: rgba(255, 25, 86, 0.95);
+  bottom: 47%;
+  transform-origin: 50% 92.3%;
+}
+
+.center-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  width: clamp(16px, 4.2vw, 24px);
+  aspect-ratio: 1;
+  border: clamp(3px, 0.8vw, 5px) solid #17ffd3;
+  border-radius: 50%;
+  background: #effffb;
+  box-shadow:
+    0 0 7px #00ffd0,
+    0 0 18px rgba(0, 255, 208, 0.9);
+  transform: translate(-50%, -50%);
+}
+
+.digital-time {
+  margin: 0;
+  color: rgba(204, 255, 244, 0.72);
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.32em;
+  text-shadow: 0 0 12px rgba(0, 255, 208, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hand {
+    will-change: auto;
+  }
+}
